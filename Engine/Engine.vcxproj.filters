@@ -16,6 +16,9 @@
     <Filter Include="Shaders">
       <UniqueIdentifier>{8b6c92a8-f65d-451e-80e3-d65773602b92}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Sounds">
+      <UniqueIdentifier>{e3461471-414b-4404-b55e-16b95a6cafae}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ChiliWin.h">
@@ -125,5 +128,28 @@
     <Image Include="Chili.ico">
       <Filter>Resource Files</Filter>
     </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <Media Include="Sounds\Eat.wav">
+      <Filter>Sounds</Filter>
+    </Media>
+    <Media Include="Sounds\Music_Loop.wav">
+      <Filter>Sounds</Filter>
+    </Media>
+    <Media Include="Sounds\Slither0.wav">
+      <Filter>Sounds</Filter>
+    </Media>
+    <Media Include="Sounds\Slither1.wav">
+      <Filter>Sounds</Filter>
+    </Media>
+    <Media Include="Sounds\Slither2.wav">
+      <Filter>Sounds</Filter>
+    </Media>
+    <Media Include="Sounds\Title.wav">
+      <Filter>Sounds</Filter>
+    </Media>
+    <Media Include="Sounds\Fart.wav">
+      <Filter>Sounds</Filter>
+    </Media>
   </ItemGroup>
 </Project>
