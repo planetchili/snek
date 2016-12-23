@@ -76,15 +76,14 @@ void Game::UpdateModel()
 				}
 				else
 				{
-					const bool eating = next == goal.GetLocation();
-					if( eating )
+					if( next == goal.GetLocation() )
 					{
-						snek.Grow();
-					}
-					snek.MoveBy( delta_loc );
-					if( eating )
-					{
+						snek.GrowAndMoveBy( delta_loc );
 						goal.Respawn( rng,brd,snek );
+					}
+					else
+					{
+						snek.MoveBy( delta_loc );
 					}
 				}
 			}

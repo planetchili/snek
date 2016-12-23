@@ -35,12 +35,13 @@ Location Snake::GetNextHeadLocation( const Location& delta_loc ) const
 	return l;
 }
 
-void Snake::Grow()
+void Snake::GrowAndMoveBy( const Location& delta_loc )
 {
 	if( nSegments < nSegmentsMax )
 	{
 		++nSegments;
 	}
+	MoveBy( delta_loc );
 }
 
 void Snake::Draw( Board & brd ) const
