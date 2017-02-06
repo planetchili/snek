@@ -14,8 +14,7 @@ public:
 	bool IsInsideBoard( const Location& loc ) const;
 	int GetContents( const Location& loc ) const;
 	void ConsumeContents( const Location& loc );
-	void SpawnObstacle( std::mt19937& rng,const class Snake& snake );
-	void SpawnFood( std::mt19937& rng,const class Snake& snake );
+	void SpawnContents( std::mt19937& rng,const class Snake& snake,int contents );
 	void DrawBorder();
 	void DrawCells();
 private:
