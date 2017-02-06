@@ -95,6 +95,10 @@ void Board::DrawCells()
 			{
 				DrawCell( { x,y },foodColor );
 			}
+			else if( contents == 3 )
+			{
+				DrawCell( { x,y },poisonColor );
+			}
 		}
 	}
 }

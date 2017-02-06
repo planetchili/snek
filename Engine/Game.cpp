@@ -30,6 +30,14 @@ Game::Game( MainWindow& wnd )
 	rng( std::random_device()() ),
 	snek( {2,2} )
 {
+	for( int i = 0; i < nPoison; i++ )
+	{
+		brd.SpawnContents( rng,snek,3 );
+	}
+	for( int i = 0; i < nFood; i++ )
+	{
+		brd.SpawnContents( rng,snek,2 );
+	}
 	brd.SpawnContents( rng,snek,2 );
 	sndTitle.Play( 1.0f,1.0f );
 }
@@ -95,13 +103,20 @@ void Game::UpdateModel()
 					brd.SpawnContents( rng,snek,2 );
 					sfxEat.Play( rng,0.8f );
 				}
+				else if( contents == 3 )
+				{
+					snek.MoveBy( delta_loc );
+					brd.ConsumeContents( next );
+					brd.SpawnContents( rng,snek,3 );
+					snekMovePeriod = std::max( snekMovePeriod * snekSpeedupFactor,snekMovePeriodMin );
+					sndFart.Play();
+				}
 				else
 				{
 					snek.MoveBy( delta_loc );
 					sfxSlither.Play( rng,0.08f );
 				}
 			}
-			snekMovePeriod = std::max( snekMovePeriod - dt * snekSpeedupFactor,snekMovePeriodMin );
 		}
 	}
 	else

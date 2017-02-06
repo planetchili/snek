@@ -20,6 +20,7 @@ public:
 private:
 	static constexpr Color borderColor = Colors::Blue;
 	static constexpr Color obstacleColor = Colors::Gray;
+	static constexpr Color poisonColor = Colors::Magenta;
 	static constexpr Color foodColor = Colors::Red;
 	static constexpr int dimension = 20;
 	static constexpr int cellPadding = 1;
@@ -29,7 +30,7 @@ private:
 	static constexpr int borderPadding = 2;
 	static constexpr int x = 70;
 	static constexpr int y = 50;
-	// 0:empty 1:obstacle 2:food 3:speedup
+	// 0:empty 1:obstacle 2:food 3:poison-speedup
 	int contents[width * height] = { 0 };
 	Graphics& gfx;
 };
