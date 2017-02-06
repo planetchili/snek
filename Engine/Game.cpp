@@ -73,7 +73,8 @@ void Game::UpdateModel()
 				snekMoveCounter -= snekMovePeriod;
 				const Location next = snek.GetNextHeadLocation( delta_loc );
 				if( !brd.IsInsideBoard( next ) ||
-					snek.IsInTileExceptEnd( next ) )
+					snek.IsInTileExceptEnd( next ) ||
+					brd.CheckForObstacle( next ) )
 				{
 					gameIsOver = true;
 					sndFart.Play();
@@ -85,6 +86,7 @@ void Game::UpdateModel()
 					{
 						snek.GrowAndMoveBy( delta_loc );
 						goal.Respawn( rng,brd,snek );
+						brd.SpawnObstacle( rng,snek,goal );
 						sfxEat.Play( rng,0.8f );
 					}
 					else
@@ -118,6 +120,7 @@ void Game::ComposeFrame()
 			SpriteCodex::DrawGameOver( 350,265,gfx );
 		}
 		brd.DrawBorder();
+		brd.DrawObstacles();
 	}
 	else
 	{
