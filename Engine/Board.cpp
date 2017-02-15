@@ -36,18 +36,19 @@ bool Board::IsInsideBoard( const Location & loc ) const
 		loc.y >= 0 && loc.y < height;
 }
 
-int Board::GetContents( const Location& loc ) const
+Board::CellContents Board::GetContents( const Location& loc ) const
 {
 	return contents[loc.y * width + loc.x];
 }
 
 void Board::ConsumeContents( const Location& loc )
 {
-	assert( GetContents( loc ) == 2 || GetContents( loc ) == 3 );
-	contents[loc.y * width + loc.x] = 0;
+	assert( GetContents( loc ) == CellContents::Food 
+			|| GetContents( loc ) == CellContents::Poison );
+	contents[loc.y * width + loc.x] = CellContents::Empty;
 }
 
-void Board::SpawnContents( std::mt19937 & rng,const Snake & snake,int contentsType )
+void Board::SpawnContents( std::mt19937 & rng,const Snake & snake,CellContents contentsType )
 {
 	std::uniform_int_distribution<int> xDist( 0,GetGridWidth() - 1 );
 	std::uniform_int_distribution<int> yDist( 0,GetGridHeight() - 1 );
@@ -58,7 +59,7 @@ void Board::SpawnContents( std::mt19937 & rng,const Snake & snake,int contentsTy
 		newLoc.x = xDist( rng );
 		newLoc.y = yDist( rng );
 	}
-	while( snake.IsInTile( newLoc ) || GetContents( newLoc ) != 0 );
+	while( snake.IsInTile( newLoc ) || GetContents( newLoc ) != CellContents::Empty );
 
 	contents[newLoc.y * width + newLoc.x] = contentsType;
 }
@@ -86,18 +87,17 @@ void Board::DrawCells()
 	{
 		for( int x = 0; x < width; x++ )
 		{
-			const int contents = GetContents( { x,y } );
-			if( contents == 1 )
+			switch( GetContents( { x,y } ) )
 			{
+			case Board::CellContents::Obstacle:
 				DrawCell( { x,y },obstacleColor );
-			}
-			else if( contents == 2 )
-			{
+				break;
+			case Board::CellContents::Food:
 				DrawCell( { x,y },foodColor );
-			}
-			else if( contents == 3 )
-			{
+				break;
+			case Board::CellContents::Poison:
 				DrawCell( { x,y },poisonColor );
+				break;
 			}
 		}
 	}
