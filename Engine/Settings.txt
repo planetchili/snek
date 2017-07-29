@@ -1,0 +1,14 @@
+[Tile Size]
+-1
+
+[Board Dimensions]
+8 6
+
+[Poison Amount]
+24
+
+[Food Amount]
+4
+
+[Speedup Rate]
+0.93
