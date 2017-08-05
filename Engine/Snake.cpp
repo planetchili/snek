@@ -60,6 +60,11 @@ bool Snake::IsInTile( const Location& target ) const
 	return false;
 }
 
+int Snake::GetLength() const
+{
+	return segments.size();
+}
+
 Snake::Segment::Segment( const Location& in_loc )
 {
 	loc = in_loc;
