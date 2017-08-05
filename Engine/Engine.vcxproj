@@ -247,6 +247,9 @@
     <Media Include="Sounds\Slither2.wav" />
     <Media Include="Sounds\Title.wav" />
   </ItemGroup>
+  <ItemGroup>
+    <Text Include="Settings.txt" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

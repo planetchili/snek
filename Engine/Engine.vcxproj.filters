@@ -19,6 +19,9 @@
     <Filter Include="Sounds">
       <UniqueIdentifier>{e3461471-414b-4404-b55e-16b95a6cafae}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Configs">
+      <UniqueIdentifier>{13a3a423-b006-4fbf-986a-c0744290666e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ChiliWin.h">
@@ -157,5 +160,10 @@
     <Media Include="Sounds\Fart.wav">
       <Filter>Sounds</Filter>
     </Media>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="Settings.txt">
+      <Filter>Configs</Filter>
+    </Text>
   </ItemGroup>
 </Project>
