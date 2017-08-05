@@ -7,19 +7,9 @@ Board::Board( const GameSettings& settings,Graphics& gfx )
 	dimension( settings.GetTileSize() ),
 	width( settings.GetBoardWidth() ),
 	height( settings.GetBoardHeight() ),
-	contents( new CellContents[width * height] ),
+	contents( width * height,CellContents::Empty ),
 	gfx( gfx )
 {
-	for( int i = 0; i < width * height; i++ )
-	{
-		contents[i] = CellContents::Empty;
-	}
-}
-
-Board::~Board()
-{
-	delete [] contents;
-	contents = nullptr;
 }
 
 void Board::DrawCell( const Location & loc,Color c )
